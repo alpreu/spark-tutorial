@@ -38,37 +38,19 @@ object Sindy {
 //    tables.foreach(df => df.printSchema())
 
 
-//    val cells = tables.flatMap(df => df.columns.map(col => df.select(col))
+//    val columns = tables.flatMap(df => df.columns.map(col => df.select(col)))
     val columns = tables.flatMap(df => df.columns.map(col => df.select(col).distinct())) // not sure atm if unique values give us a benefit
-    //columns.foreach(df => df.show())
+//    columns.foreach(df => df.show())
 
 
-    val cells = columns.map(col => {
-//      val colName = col.schema.fieldNames.head
-//      col.map(row => row)
-    })
+    val valueColumnPairs = columns.map(col => (
+      col.map(row => (row.get(0).toString, row.schema.fieldNames.head))
+    )).reduce((c1, c2) => c1.union(c2)).rdd
+//    valueColumnPairs.foreach(c => println(c))
 
-    columns.foreach(column => {
-      println(column.schema.fieldNames.head)
-      column.foreach(row => {
-        val value = row.get(0)
-//        val colName = row.schema.fieldNames
+    val columnsByValue = valueColumnPairs.groupByKey()//.mapValues(List(_))
+    columnsByValue.foreach(e => println(e))
 
-      })
-      println("----")
-    })
-
-
-/*
-    val columnsPerTable = tables.map(df => df.columns.map(colname => df.select(colname)))
-    //columnsPerTable.foreach(table => table.foreach(col => col.show()))
-
-    val distinctColumnsPerTable = columnsPerTable.map(table => table.map(c => c.distinct()))
-    //distinctColumnsPerTable.foreach(table => table.foreach(col => col.show()))
-
-    val distinctColumns = distinctColumnsPerTable.flatMap(arrayOfCols => arrayOfCols)
-    //distinctColumns.foreach(col => col.show())
-    */
 
   }
 }
