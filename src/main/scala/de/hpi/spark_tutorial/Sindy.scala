@@ -4,23 +4,7 @@ import org.apache.spark.sql.{Dataset, Encoder, Row, SparkSession, functions}
 
 
 object Sindy {
-
-  /*
-    val sc = spark.sparkContext
-    val rdd = sc.parallelize(Seq("Roses are red", "Violets are blue"))  // lines
-
-    println("data")
-    rdd.collect.foreach(s => print(s + " | "))
-    println()
-
-    println("map")
-    rdd.map(_.split(" ")).collect.foreach(s => print(s.foreach(i => print(i + ",")) + " | "))
-    println()
-
-    println("flatmap")
-    rdd.flatMap(_.split(" ")).collect.foreach(s => print(s + " | "))
-    println()
-    */
+  
   def discoverINDs(inputs: List[String], spark: SparkSession): Unit = {
 
     println(inputs)
