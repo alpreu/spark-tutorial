@@ -44,6 +44,14 @@
       <version>2.4.0</version>
       <!--<scope>provided</scope>-->
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.github.scopt/scopt -->
+    <dependency>
+      <groupId>com.github.scopt</groupId>
+      <artifactId>scopt_2.11</artifactId>
+      <version>3.7.1</version>
+    </dependency>
+
   </dependencies>
 
   <build>
