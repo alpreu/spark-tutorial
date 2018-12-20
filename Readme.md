@@ -1,7 +1,14 @@
-This is a basic scala project that includes spark dependencies and necessary build-configuration to build a jar that can be submitted to a spark installation via spark-submit.
-Things to do after checking out and opening in intellij:
-    Add scala SDK 2.11.11 (tested with this version, it has to be 2.11.x since this is the spark version)
-    Add jdk 8
-    add Framework support of Maven
-To build the project:
-    run mvn package
+# Spark Handson
+Our solution for the Spark hands-on of the Distributed Data Management course at the Hasso-Plattner-Institute.
+
+## Running the system
+Build the project with maven first.
+To start the IND discovery run:
+
+Assuming you are using 4 worker cores and your data is located in `./TPCH`:
+`java -jar SparkTutorial-1.0.jar`
+
+If you have a different configuration you can run the program as follows:
+`java -jar SparkTutorial-1.0.jar --cores=<number of worker cores> --path=<path to the TPCH data>`
+
+
